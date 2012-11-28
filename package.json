@@ -5,7 +5,8 @@
   "private": true,
   "dependencies": {
     "express": "3.x",
-    "mongodb": "1.1.8"
+    "mongodb": "1.x",
+    "node-compass": "x"
   },
   "engines": {
     "node": "0.8.4",
