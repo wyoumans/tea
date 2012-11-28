@@ -1,12 +1,11 @@
 {
-  "name": "wine-cellar",
-  "description": "Wine Cellar Application",
+  "name": "tea",
+  "description": "Yay For Tea",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
     "express": "3.x",
-    "mongodb": "1.1.8",
-    "socket.io": "0.9.10"
+    "mongodb": "1.1.8"
   },
   "engines": {
     "node": "0.8.4",
