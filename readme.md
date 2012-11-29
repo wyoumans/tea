@@ -1,3 +1,6 @@
-# Sample Application with Backbone.js, Twitter Bootstrap, Node.js, Express, and MongoDB #
+#  Tea Showcase
 
-"Tea" is a sample CRUD application built with with Backbone.js, Twitter Bootstrap, Node.js, Express, and MongoDB.
+## Getting Started
+
+- npm install
+- node server.js
