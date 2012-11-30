@@ -1,6 +1,6 @@
-window.Wine = Backbone.Model.extend({
+window.Tea = Backbone.Model.extend({
 
-  urlRoot: "/wines",
+  urlRoot: "/teas",
 
   idAttribute: "_id",
 
@@ -11,8 +11,8 @@ window.Wine = Backbone.Model.extend({
       return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a name"};
     };
 
-    this.validators.grapes = function (value) {
-      return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a grape variety"};
+    this.validators.type = function (value) {
+      return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a type"};
     };
 
     this.validators.country = function (value) {
@@ -44,7 +44,7 @@ window.Wine = Backbone.Model.extend({
   defaults: {
     _id: null,
     name: "",
-    grapes: "",
+    type: "",
     country: "USA",
     region: "California",
     year: "",
@@ -53,10 +53,10 @@ window.Wine = Backbone.Model.extend({
   }
 });
 
-window.WineCollection = Backbone.Collection.extend({
+window.TeaCollection = Backbone.Collection.extend({
 
-  model: Wine,
+  model: Tea,
 
-  url: "/wines"
+  url: "/teas"
 
 });

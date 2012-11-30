@@ -1,12 +1,12 @@
 var AppRouter = Backbone.Router.extend({
 
   routes: {
-    ""                  : "home",
-    "wines" : "list",
-    "wines/page/:page"  : "list",
-    "wines/add"         : "addWine",
-    "wines/:id"         : "wineDetails",
-    "about"             : "about"
+    ""                 : "home",
+    "teas"             : "list",
+    "teas/page/:page"  : "list",
+    "teas/add"         : "addTea",
+    "teas/:id"         : "teaDetails",
+    "about"            : "about"
   },
 
   initialize: function () {
@@ -24,24 +24,24 @@ var AppRouter = Backbone.Router.extend({
 
   list: function(page) {
     var p = page ? parseInt(page, 10) : 1;
-    var wineList = new WineCollection();
-    wineList.fetch({success: function(){
-      $("#content").html(new WineListView({model: wineList, page: p}).el);
+    var teaList = new TeaCollection();
+    teaList.fetch({success: function(){
+      $("#content").html(new TeaListView({model: teaList, page: p}).el);
     }});
     this.headerView.selectMenuItem('home-menu');
   },
 
-  wineDetails: function (id) {
-    var wine = new Wine({_id: id});
-    wine.fetch({success: function(){
-      $("#content").html(new WineView({model: wine}).el);
+  teaDetails: function (id) {
+    var tea = new Tea({_id: id});
+    tea.fetch({success: function(){
+      $("#content").html(new TeaView({model: tea}).el);
     }});
     this.headerView.selectMenuItem();
   },
 
-  addWine: function() {
-    var wine = new Wine();
-    $('#content').html(new WineView({model: wine}).el);
+  addTea: function() {
+    var tea = new Tea();
+    $('#content').html(new TeaView({model: tea}).el);
     this.headerView.selectMenuItem('add-menu');
   },
 
@@ -55,7 +55,7 @@ var AppRouter = Backbone.Router.extend({
 
 });
 
-utils.loadTemplate(['HomeView', 'HeaderView', 'WineView', 'WineListItemView', 'AboutView'], function() {
+utils.loadTemplate(['HomeView', 'HeaderView', 'TeaView', 'TeaListItemView', 'AboutView'], function() {
   app = new AppRouter();
   Backbone.history.start();
 });
