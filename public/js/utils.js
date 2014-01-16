@@ -18,7 +18,7 @@ window.utils = {
     $.when.apply(null, deferreds).done(callback);
   },
 
-  displayValidationErrors: function (messages) {
+  displayValidationErrors: function(messages) {
     for (var key in messages) {
       if (messages.hasOwnProperty(key)) {
         this.addValidationError(key, messages[key]);
@@ -27,13 +27,13 @@ window.utils = {
     this.showAlert('Warning!', 'Fix validation errors and try again', 'alert-warning');
   },
 
-  addValidationError: function (field, message) {
+  addValidationError: function(field, message) {
     var controlGroup = $('#' + field).parent().parent();
     controlGroup.addClass('error');
     $('.help-inline', controlGroup).html(message);
   },
 
-  removeValidationError: function (field) {
+  removeValidationError: function(field) {
     var controlGroup = $('#' + field).parent().parent();
     controlGroup.removeClass('error');
     $('.help-inline', controlGroup).html('');

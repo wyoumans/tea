@@ -1,10 +1,10 @@
 window.TeaListView = Backbone.View.extend({
 
-  initialize: function () {
+  initialize: function() {
     this.render();
   },
 
-  render: function () {
+  render: function() {
     var teas = this.model.models;
     var len = teas.length;
     var startPos = (this.options.page - 1) * 8;
@@ -13,10 +13,15 @@ window.TeaListView = Backbone.View.extend({
     $(this.el).html('<ul class="thumbnails"></ul>');
 
     for (var i = startPos; i < endPos; i++) {
-      $('.thumbnails', this.el).append(new TeaListItemView({model: teas[i]}).render().el);
+      $('.thumbnails', this.el).append(new TeaListItemView({
+        model: teas[i]
+      }).render().el);
     }
 
-    $(this.el).append(new Paginator({model: this.model, page: this.options.page}).render().el);
+    $(this.el).append(new Paginator({
+      model: this.model,
+      page: this.options.page
+    }).render().el);
 
     return this;
   }
@@ -26,12 +31,12 @@ window.TeaListItemView = Backbone.View.extend({
 
   tagName: "li",
 
-  initialize: function () {
+  initialize: function() {
     this.model.bind("change", this.render, this);
     this.model.bind("destroy", this.close, this);
   },
 
-  render: function () {
+  render: function() {
     $(this.el).html(this.template(this.model.toJSON()));
     return this;
   }

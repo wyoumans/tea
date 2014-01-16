@@ -1,22 +1,22 @@
 window.TeaView = Backbone.View.extend({
 
-  initialize: function () {
+  initialize: function() {
     this.render();
   },
 
-  render: function () {
+  render: function() {
     $(this.el).html(this.template(this.model.toJSON()));
     return this;
   },
 
   events: {
-    "change"        : "change",
-    "click .save"   : "beforeSave",
-    "click .delete" : "deleteTea",
-    "drop #picture" : "dropHandler"
+    "change": "change",
+    "click .save": "beforeSave",
+    "click .delete": "deleteTea",
+    "drop #picture": "dropHandler"
   },
 
-  change: function (event) {
+  change: function(event) {
     // Remove any existing alert message
     utils.hideAlert();
 
@@ -35,7 +35,7 @@ window.TeaView = Backbone.View.extend({
     }
   },
 
-  beforeSave: function () {
+  beforeSave: function() {
     var self = this;
     var check = this.model.validateAll();
     if (check.isValid === false) {
@@ -46,24 +46,24 @@ window.TeaView = Backbone.View.extend({
     return false;
   },
 
-  saveTea: function () {
+  saveTea: function() {
     var self = this;
     console.log('before save');
     this.model.save(null, {
-      success: function (model) {
+      success: function(model) {
         self.render();
         app.navigate('teas/' + model.id, false);
         utils.showAlert('Success!', 'Tea saved successfully', 'alert-success');
       },
-      error: function () {
+      error: function() {
         utils.showAlert('Error', 'An error occurred while trying to delete this item', 'alert-error');
       }
     });
   },
 
-  deleteTea: function () {
+  deleteTea: function() {
     this.model.destroy({
-      success: function () {
+      success: function() {
         alert('Tea deleted successfully');
         window.history.back();
       }
@@ -71,7 +71,7 @@ window.TeaView = Backbone.View.extend({
     return false;
   },
 
-  dropHandler: function (event) {
+  dropHandler: function(event) {
     event.stopPropagation();
     event.preventDefault();
     var e = event.originalEvent;
@@ -80,7 +80,7 @@ window.TeaView = Backbone.View.extend({
 
     // Read the image file from the local file system and display it in the img tag
     var reader = new FileReader();
-    reader.onloadend = function () {
+    reader.onloadend = function() {
       $('#picture').attr('src', reader.result);
     };
     reader.readAsDataURL(this.pictureFile);
